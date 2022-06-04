@@ -1,0 +1,3 @@
+To run a specific env using tox: tox -e env_name 
+
+To run all the sub envs inside a env: tox 

@@ -1,0 +1,18 @@
+-r requirements.txt
+
+# testing requirements
+pytest
+
+# repo maintenance tooling
+# black : code styling enforcement library
+black
+
+# flake8: linting tool, 
+# linting can let you know if you are importing some package in a module which is not being used 
+flake8
+
+# mypy: type checking tool 
+mypy
+
+# isort: i to check our inputs in a correct sorted order 
+isort
