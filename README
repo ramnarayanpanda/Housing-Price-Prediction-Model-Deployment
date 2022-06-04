@@ -1,3 +1,42 @@
 To run a specific env using tox: tox -e env_name 
 
 To run all the sub envs inside a env: tox 
+
+
+In the Heroku deployments  
+i>   First create a app using "heroku create"
+     NOTE: When the app is being created heroku checks the requirements.txt file to install all the packages, so here test_requirements.txt file wont be installed, 
+     BE AWARE OF THAT.
+ii>  Go to the folder where your project is present. Open cmd there.
+     We need to push only the house_price_api subtree to the heroku app,
+     run:  "git subtree push --prefix house_price_api heroku main"
+iii> Also you can use curl comand generated in the app to call the prediction from any linux env running locally or virtually.
+iv>  TO get the saved logs of the last push in heroku, you can run:  heroku logs --trail 
+     You can use these logs to check in case there are any errors.
+
+Procfile: It is necessary to deploy your app to heroku, It specifies the
+          commands to run our app.
+          web: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+          
+          uvicorn: our web server 
+          app.main:app:  app(folder).main(module):app(instance of out FastAPI)
+          --port $PORT: You can not specify custom port here, heroku dynamically assigns a port. 
+
+
+Now we dont want to run git push to heroku manually everytime we run our app. So we need to automate this.
+Also we need to publish our own model (here we used the model tid-regression-model==3.0.3 in the req.txt file), version the model, training your model.
+
+
+
+
+
+
+----------------------- CI / CD ------------------------
+Automating the stages of APP development.
+
+  Cont Integration                      Cont Delivery                           Cont deployment
+Build -> Test -> Merge   ----->   Automatically release to Repo   ----->   Automatically deploy to Prod/UAT/SIT
+
+![Alt text](CI_CD.png?raw=true "Title")
+
+
