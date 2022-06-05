@@ -40,3 +40,14 @@ Build -> Test -> Merge   ----->   Automatically release to Repo   ----->   Autom
 ![Alt text](CI_CD.png?raw=true "Title")
 
 
+Here we are going to Automate training, testing, deployment. 
+For eg: Eariler when we used to change something we were running "tox -e train" and "tox" manually. Also "git push heroku main" manually.  
+
+In earlier we had to set env variables, a lot of times they were set in tox.
+But now with CircleCI we are deploying things outside of our local machines.
+So we have to add env variables to account for that.
+Mainly 3 things we need:
+i>   HEROKU_API_KEY: Useful when we are running the git push command.
+ii>  HEROKU_APP_NAME: Which app to connect to from CircleCI.
+iii> PIP_EXTRA_INDEX_URL: TO install our ML model dependency on a private server. We need this because if your company has inttelectual prperty and you dont want to share it with others then you need a private index server.
+And GemFury is a easy way to operate with private packages.

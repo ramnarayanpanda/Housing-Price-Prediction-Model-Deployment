@@ -1,3 +1,5 @@
+--extra-index-url=${PIP_EXTRA_INDEX_URL} #see the README file
+
 uvicorn>=0.16.0,<0.18.0
 fastapi>=0.64.0,<1.0.0
 python-multipart>=0.0.5,<0.1.0
